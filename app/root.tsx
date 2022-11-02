@@ -11,10 +11,16 @@ import styles from './styles/app.css'
 
 export const meta: MetaFunction = () => ({
 	charset: 'utf-8',
-	title: 'New Remix App',
+	title: 'Bienvenido a Riluz!',
 	viewport: 'width=device-width,initial-scale=1',
 })
-export const links: LinksFunction = () => [{ href: styles, rel: 'stylesheet' }]
+export const links: LinksFunction = () => [
+	{ href: styles, rel: 'stylesheet' },
+	{
+		href: 'https://fonts.googleapis.com/css2?family=Karla:wght@300&display=swap',
+		rel: 'stylesheet',
+	},
+]
 
 export default function App() {
 	return (
@@ -23,7 +29,7 @@ export default function App() {
 				<Meta />
 				<Links />
 			</head>
-			<body className='bg-light-100'>
+			<body className="bg-light-100">
 				<Outlet />
 				<ScrollRestoration />
 				<Scripts />
