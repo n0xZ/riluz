@@ -1,7 +1,9 @@
 import type { ActionArgs } from '@remix-run/node'
+import { makeDomainFunction } from 'domain-functions'
 import { z } from 'zod'
+import { login } from '~/utils/auth.server'
 
-const loginSchema = z.object({
+export const loginSchema = z.object({
 	email: z
 		.string()
 		.min(4, { message: 'Campo requerido' })
@@ -9,12 +11,14 @@ const loginSchema = z.object({
 	password: z.string().min(4, { message: 'Campo requerido' }),
 })
 
+const loginFunc = makeDomainFunction(loginSchema)(
+	async ({ email, password }) => {
+		const result = await login({ email, password })
+		if(!result) throw new Error('')
+	}
+)
 export const action = async ({ request }: ActionArgs) => {}
 
-
 export default function Login() {
-	return <main>
-  
-  
-  </main>
+	return <main></main>
 }
