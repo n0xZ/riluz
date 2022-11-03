@@ -25,7 +25,7 @@ export async function getUserId(request: Request): Promise<string | undefined> {
 export async function createUserSession(userId: string) {
 	const session = await sessionStorage.getSession()
 	session.set('userId', userId)
-	return redirect('/private', {
+	return redirect('/home', {
 		headers: {
 			'Set-Cookie': await sessionStorage.commitSession(session),
 		},
