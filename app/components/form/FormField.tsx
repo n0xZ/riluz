@@ -9,12 +9,12 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
 
 export const FormField = ({ label, name, type, errors, ...rest }: Props) => {
 	return (
-		<aside className="w-full max-w-xs space-y-0 form-control">
-			<label className="font-bold label label-text">{label}</label>
+		<aside className="flex flex-col justify-center max-w-3xl space-y-3">
+			<label className="font-bold ">{label}</label>
 			<input
 				type={type}
 				name={name}
-				className="w-full max-w-xs input input-bordered "
+				className="w-full px-5 py-3 border-2 border-purple-500 rounded-lg outline-none"
 				{...rest}
 			/>
 			<span className="text-red-500 h-9 " data-test="input-errors">

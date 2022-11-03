@@ -9,7 +9,7 @@ import {
 } from 'domain-functions'
 import { z } from 'zod'
 import { FormField } from '~/components/form/FormField'
-import {  register } from '~/utils/auth.server'
+import { register } from '~/utils/auth.server'
 import { createUserSession, getSession } from '~/utils/session.server'
 
 export const registerSchema = z.object({
@@ -23,8 +23,8 @@ export const registerSchema = z.object({
 })
 
 const registerFunc = makeDomainFunction(registerSchema)(
-	async ({ email, password,username }) => {
-		const registerResult = await register({ email, password,username })
+	async ({ email, password, username }) => {
+		const registerResult = await register({ email, password, username })
 		if (!registerResult) throw new Error('Credenciales incorrectas')
 		return registerResult
 	}
@@ -57,7 +57,7 @@ export default function Register() {
 		<Form
 			ref={(e) => isSubmitting && e?.reset()}
 			method="post"
-			className="grid card-body place-items-center"
+			className="container flex flex-col justify-center max-w-3xl p-2 mx-auto xl:p-0"
 		>
 			<FormField
 				label="Correo electrónico"
@@ -85,7 +85,7 @@ export default function Register() {
 			<Link to="/login">Ya tengo una cuenta</Link>
 			<span className="text-red-500 h-9 ">
 				{actionData &&
-					actionData.externalErrors &&
+					actionData.externalErrors.length !== 0 &&
 					actionData.externalErrors[0].message}
 			</span>
 		</Form>
