@@ -9,10 +9,21 @@ datasource db {
 }
 
 model User{
-  id String @id @default(cuid())
+  userId String @id @default(cuid())
   username String  @unique
   email String @unique
   password String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  notes Note[]
 }
+model Note{
+  id String @id @default(cuid())
+  title String
+  content String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  author User @relation(fields: [authorId], references: [userId]  )
+  authorId String @unique
+}
+
