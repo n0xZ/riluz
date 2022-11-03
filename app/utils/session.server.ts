@@ -22,10 +22,9 @@ export async function getUserId(request: Request): Promise<string | undefined> {
 	return userId
 }
 
-export async function createUserSession(userId: string, comic: string) {
+export async function createUserSession(userId: string) {
 	const session = await sessionStorage.getSession()
 	session.set('userId', userId)
-	session.set('comicPreference', comic)
 	return redirect('/private', {
 		headers: {
 			'Set-Cookie': await sessionStorage.commitSession(session),
