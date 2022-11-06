@@ -1,4 +1,5 @@
 import { createCookieSessionStorage, redirect } from '@remix-run/node'
+import { prisma } from './prisma.server'
 
 export const sessionStorage = createCookieSessionStorage({
 	cookie: {
@@ -43,7 +44,14 @@ export async function requireUserId(
 	}
 	return userId
 }
+export async function requireUser(request: Request) {
+	const loggedUserId = await requireUserId(request)
+	const loggedUser = await prisma.user.findUnique({
+		where: { userId: loggedUserId },
+	})
 
+	return loggedUser
+}
 export async function logout(request: Request) {
 	const session = await getSession(request)
 	return redirect('/', {
