@@ -36,6 +36,7 @@ export const action = async ({ request }: ActionArgs) => {
 	const inputErrors = errorMessagesForSchema(result.inputErrors, registerSchema)
 	return json(
 		{
+			username: inputErrors.username,
 			email: inputErrors.email,
 			password: inputErrors.password,
 			externalErrors: result.errors,
@@ -59,6 +60,13 @@ export default function Register() {
 			method="post"
 			className="container flex flex-col justify-center max-w-3xl p-2 mx-auto xl:p-0"
 		>
+			<FormField
+				label="Nombre de usuario"
+				name="username"
+				type="text"
+				errors={actionData && actionData.username && actionData?.username[0]}
+				data-test="username-input"
+			/>
 			<FormField
 				label="Correo electrónico"
 				name="email"
