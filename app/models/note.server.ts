@@ -1,7 +1,7 @@
 import type { Note } from '@prisma/client'
 import { prisma } from '~/utils/prisma.server'
 
-export const getNotesByAuthorId = async (authorId?: string) => {
+export const getNotesByAuthorId = async (authorId: string) => {
 	return await prisma.note.findMany({ where: { authorId } })
 }
 
@@ -14,11 +14,11 @@ export const createNote = async ({ title, content, authorId }: Note) => {
 		data: {
 			title,
 			content,
-			author: { connect: { userId: authorId } },
+			author: { connect: { id: authorId } },
 		},
 	})
 }
-export const deleteNote = async (noteId?: string) => {
+export const deleteNote = async (noteId: string) => {
 	return await prisma.note.delete({ where: { id: noteId } })
 }
 export const updateNote = async ({ title, content, id }: Partial<Note>) => {
