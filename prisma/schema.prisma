@@ -1,29 +1,65 @@
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
   previewFeatures = ["referentialIntegrity"]
 }
+
 datasource db {
-  provider = "mysql"
-  url = env("DATABASE_URL")
+  provider             = "mysql"
+  url                  = env("DATABASE_URL")
   referentialIntegrity = "prisma"
 }
 
-model User{
-  userId String @id @default(cuid())
-  username String  @unique
-  email String @unique
-  password String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  notes Note[]
-}
-model Note{
-  id String @id @default(cuid())
-  title String
-  content String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  author User @relation(fields: [authorId], references: [userId]  )
-  authorId String @unique
+model User {
+  id    String    @id @default(cuid())
+  username  String    @unique
+  email     String    @unique
+  password  String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  notes     Note[]
+  contacts  Contact[]
 }
 
+model Note {
+  id        String   @id @default(cuid())
+  title     String
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  author    User     @relation(fields: [authorId], references: [id])
+  authorId  String   @unique
+}
+
+model Contact {
+  id     String   @id @default(cuid())
+  actor         User     @relation(fields: [actorId], references: [id])
+  actorId       String
+  invitedUserId String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  status        Status
+  chat          Chat?
+}
+
+model Chat {
+  id    String    @id @default(cuid())
+  contact   Contact   @relation(fields: [id], references: [id])
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  messages  Message[]
+}
+
+model Message {
+  id String   @id @default(cuid())
+  content   String
+  userId    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  chat      Chat     @relation(fields: [id], references: [id])
+}
+
+enum Status {
+  ACCEPTED
+  REJECTED
+  PENDING
+}
