@@ -18,7 +18,7 @@ export const HomeIcon = () => {
 export default function HomeOutlet() {
 	return (
 		<>
-			<header className="p-5 ">
+			<header className="p-5 bg-fuchsia-300">
 				<nav className="container flex flex-row items-center justify-between max-w-5xl mx-auto ">
 					<h1>
 						<NavLink to="/home">

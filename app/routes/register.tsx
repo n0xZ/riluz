@@ -55,47 +55,49 @@ export default function Register() {
 	const transition = useTransition()
 	const isSubmitting = transition.state === 'submitting'
 	return (
-		<Form
-			ref={(e) => isSubmitting && e?.reset()}
-			method="post"
-			className="container flex flex-col justify-center max-w-3xl p-2 mx-auto xl:p-0"
-		>
-			<FormField
-				label="Nombre de usuario"
-				name="username"
-				type="text"
-				errors={actionData && actionData.username && actionData?.username[0]}
-				data-test="username-input"
-			/>
-			<FormField
-				label="Correo electrónico"
-				name="email"
-				type="email"
-				errors={actionData && actionData.email && actionData?.email[0]}
-				data-test="email-input"
-			/>
-			<FormField
-				label="Contraseña"
-				name="password"
-				type="password"
-				errors={actionData && actionData.password && actionData?.password[0]}
-				data-test="password-input"
-			/>
-
-			<button
-				type="submit"
-				className="btn btn-primary "
-				disabled={isSubmitting}
-				name="submit-login"
+		<main className="grid h-screen place-items-center">
+			<Form
+				ref={(e) => isSubmitting && e?.reset()}
+				method="post"
+				className="container flex flex-col justify-center max-w-3xl p-2 mx-auto xl:p-0"
 			>
-				{!isSubmitting ? 'Crear cuenta' : 'Creando...'}
-			</button>
-			<Link to="/login">Ya tengo una cuenta</Link>
-			<span className="text-red-500 h-9 ">
-				{actionData &&
-					actionData.externalErrors.length !== 0 &&
-					actionData.externalErrors[0].message}
-			</span>
-		</Form>
+				<FormField
+					label="Nombre de usuario"
+					name="username"
+					type="text"
+					errors={actionData && actionData.username && actionData?.username[0]}
+					data-test="username-input"
+				/>
+				<FormField
+					label="Correo electrónico"
+					name="email"
+					type="email"
+					errors={actionData && actionData.email && actionData?.email[0]}
+					data-test="email-input"
+				/>
+				<FormField
+					label="Contraseña"
+					name="password"
+					type="password"
+					errors={actionData && actionData.password && actionData?.password[0]}
+					data-test="password-input"
+				/>
+
+				<button
+					type="submit"
+					className="px-5 py-3 font-bold rounded-lg bg-fuchsia-600 text-gray-50 "
+					disabled={isSubmitting}
+					name="submit-login"
+				>
+					{!isSubmitting ? 'Crear cuenta' : 'Creando...'}
+				</button>
+				<Link to="/login" className='text-center'>Ya tengo una cuenta</Link>
+				<span className="text-red-500 h-9 ">
+					{actionData &&
+						actionData.externalErrors.length !== 0 &&
+						actionData.externalErrors[0].message}
+				</span>
+			</Form>
+		</main>
 	)
 }

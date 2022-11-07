@@ -57,10 +57,12 @@ export default function Login() {
 	return (
 		<main className="grid h-screen place-items-center">
 			<Form
+				action="/login"
 				ref={(e) => isSubmitting && e?.reset()}
 				method="post"
 				className="container flex flex-col justify-center max-w-3xl p-2 mx-auto xl:p-0"
 			>
+				<h1 className="text-lg text-center xl:text-2xl">Inicia sesión en Riluz!</h1>
 				<FormField
 					label="Correo electrónico"
 					name="email"
@@ -78,13 +80,15 @@ export default function Login() {
 
 				<button
 					type="submit"
-					className="px-5 py-3 rounded-lg bg-fuchsia-600 "
+					className="px-5 py-3 font-bold rounded-lg bg-fuchsia-600 text-gray-50 "
 					disabled={isSubmitting}
 					name="submit-login"
 				>
 					{!isSubmitting ? 'Iniciar sesión' : 'Iniciando...'}
 				</button>
-				<Link to="/register" className="mt-6 text-center">No tengo una cuenta</Link>
+				<Link to="/register" className="mt-6 text-center">
+					No tengo una cuenta
+				</Link>
 				<span className="text-red-500 h-9 ">
 					{actionData &&
 						actionData.externalErrors.length !== 0 &&
