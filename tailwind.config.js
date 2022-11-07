@@ -2,7 +2,12 @@
 module.exports = {
 	content: ['./app/*.tsx', './app/routes/**/*.tsx', './app/components/**/*.tsx'],
 	theme: {
-		extend: { fontFamily: { karla: ['Karla'] } },
+		extend: {
+			fontFamily: {
+				lexend: ['Lexend Deca', 'cursive'],
+				gowun: ['Gowun Dodum', 'sans-serif'],
+			},
+		},
 	},
 	plugins: [],
 }

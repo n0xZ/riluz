@@ -17,7 +17,8 @@ export const meta: MetaFunction = () => ({
 export const links: LinksFunction = () => [
 	{ href: styles, rel: 'stylesheet' },
 	{
-		href: 'https://fonts.googleapis.com/css2?family=Karla:wght@300&display=swap',
+		href:
+			'https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Lexend+Deca:wght@300&display=swap',
 		rel: 'stylesheet',
 	},
 ]
@@ -29,7 +30,7 @@ export default function App() {
 				<Meta />
 				<Links />
 			</head>
-			<body className="text-neutral-900 bg-gradient-to-r from-violet-100 to-fuchsia-100 font-karla">
+			<body className="text-neutral-900 bg-gradient-to-r from-violet-100 to-fuchsia-100 font-gowun">
 				<Outlet />
 				<ScrollRestoration />
 				<Scripts />
