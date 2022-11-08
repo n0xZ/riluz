@@ -22,7 +22,6 @@ specifiers:
   prisma: ^4.5.0
   react: ^18.2.0
   react-dom: ^18.2.0
-  remix-flat-routes: ^0.4.4
   tailwindcss: ^3.2.1
   typescript: ^4.7.4
   zod: ^3.19.1
@@ -52,7 +51,6 @@ devDependencies:
   concurrently: 7.5.0
   eslint: 8.26.0
   postcss: 8.4.18
-  remix-flat-routes: 0.4.4
   tailwindcss: 3.2.1_postcss@8.4.18
   typescript: 4.8.4
 
@@ -2564,12 +2562,6 @@ packages:
     dependencies:
       balanced-match: 1.0.2
       concat-map: 0.0.1
-
-  /brace-expansion/2.0.1:
-    resolution: {integrity: sha512-XnAIvQ8eM+kC6aULx6wuQiwVsnzsi9d3WxzV3FpWTGA19F621kwdbsAcFKXgKUHZWsy+mY6iL1sHTxWEFCytDA==}
-    dependencies:
-      balanced-match: 1.0.2
-    dev: true
 
   /braces/2.3.2:
     resolution: {integrity: sha512-aNdbnj9P8PjdXU4ybaWLK2IF3jc/EoDYbC7AazW6to3TRsfXxscC9UXOB5iDiEQrkyIbWp2SLQda4+QAa7nc3w==}
@@ -6082,13 +6074,6 @@ packages:
     dependencies:
       brace-expansion: 1.1.11
 
-  /minimatch/5.1.0:
-    resolution: {integrity: sha512-9TPBGGak4nHfGZsPBohm9AWg6NoT7QTCehS3BIJABslyZbzxfV78QM2Y6+i741OPZIafFAaiiEMh5OyIrJPgtg==}
-    engines: {node: '>=10'}
-    dependencies:
-      brace-expansion: 2.0.1
-    dev: true
-
   /minimist/1.2.7:
     resolution: {integrity: sha512-bzfL1YUZsP41gmu/qjrEk0Q6i2ix/cVeAhbCbqH9u3zYutS1cLg00qhrD0M2MVdCcx4Sc0UpP2eBWo9rotpq6g==}
     dev: true
@@ -7061,13 +7046,6 @@ packages:
       '@types/mdast': 3.0.10
       mdast-util-to-hast: 11.3.0
       unified: 10.1.2
-    dev: true
-
-  /remix-flat-routes/0.4.4:
-    resolution: {integrity: sha512-DmdOm50nXvksW6cX2m+IJIYb9TLus9SgfhgRO/trwkvVIB9NusN/VkiYP/vclGMFWEJky/Z3L2C3BbkNIYGCqg==}
-    hasBin: true
-    dependencies:
-      minimatch: 5.1.0
     dev: true
 
   /repeat-element/1.1.4:
