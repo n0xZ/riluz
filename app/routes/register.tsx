@@ -50,6 +50,27 @@ export const loader = async ({ request }: LoaderArgs) => {
 	if (session.get('userId')) return redirect('/home')
 	return null
 }
+function LoadingIcon() {
+	return (
+		<svg
+			fill="currentColor"
+			strokeWidth="0"
+			xmlns="http://www.w3.org/2000/svg"
+			viewBox="0 0 24 24"
+			height="1em"
+			width="1em"
+		>
+			<circle cx="12" cy="20" r="2"></circle>
+			<circle cx="12" cy="4" r="2"></circle>
+			<circle cx="6.343" cy="17.657" r="2"></circle>
+			<circle cx="17.657" cy="6.343" r="2"></circle>
+			<circle cx="4" cy="12" r="2.001"></circle>
+			<circle cx="20" cy="12" r="2"></circle>
+			<circle cx="6.343" cy="6.344" r="2"></circle>
+			<circle cx="17.657" cy="17.658" r="2"></circle>
+		</svg>
+	)
+}
 export default function Register() {
 	const actionData = useActionData<typeof action>()
 	const transition = useTransition()
@@ -59,8 +80,11 @@ export default function Register() {
 			<Form
 				ref={(e) => isSubmitting && e?.reset()}
 				method="post"
-				className="container flex flex-col justify-center max-w-3xl p-2 mx-auto xl:p-0"
+				className="container flex flex-col justify-center max-w-3xl p-2 mx-auto space-y-3 xl:p-0"
 			>
+				<h1 className="text-lg font-bold text-center xl:text-2xl">
+					Crea tu cuenta ya en Riluz!
+				</h1>
 				<FormField
 					label="Nombre de usuario"
 					name="username"
@@ -85,13 +109,24 @@ export default function Register() {
 
 				<button
 					type="submit"
-					className="px-5 py-3 font-bold rounded-lg bg-fuchsia-600 text-gray-50 "
+					className={`max-w-3xl px-5 py-3 font-bold rounded-lg bg-fuchsia-600 text-gray-50 ${
+						isSubmitting && 'flex flex-row items-center justify-center space-x-3'
+					}`}
 					disabled={isSubmitting}
 					name="submit-login"
 				>
-					{!isSubmitting ? 'Crear cuenta' : 'Creando...'}
+					{!isSubmitting ? (
+						'Crear cuenta'
+					) : (
+						<>
+							<LoadingIcon />
+							<span>Creando...</span>
+						</>
+					)}
 				</button>
-				<Link to="/login" className='text-center'>Ya tengo una cuenta</Link>
+				<Link to="/login" className="text-center">
+					Ya tengo una cuenta
+				</Link>
 				<span className="text-red-500 h-9 ">
 					{actionData &&
 						actionData.externalErrors.length !== 0 &&

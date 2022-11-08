@@ -64,18 +64,28 @@ export default function Index() {
 	return (
 		<>
 			<header className="p-5 ">
-				<nav className="container flex flex-row items-center justify-between max-w-5xl mx-auto ">
+				<nav className="container flex flex-row items-center justify-between max-w-5xl mx-auto text-xl text-gray-600 font-telex">
 					<h1>
-						<NavLink to="/">Riluz - devspot</NavLink>
+						<NavLink
+							to="/"
+							className="font-bold duration-100 ease-in-out hover:text-fuchsia-400 "
+						>
+							Riluz
+						</NavLink>
 					</h1>
-					<ul className="flex-row items-center hidden space-x-5 xl:flex lg:flex">
+					<ul className="flex-row items-center hidden space-x-5 font-medium xl:flex lg:flex">
 						<li>
-							<NavLink to="/login">Iniciar sesión</NavLink>
+							<NavLink
+								to="/login"
+								className="duration-100 ease-in-out hover:text-fuchsia-400"
+							>
+								Iniciar sesión
+							</NavLink>
 						</li>
 						<li>
 							<NavLink
 								to="/register"
-								className="px-5 py-4 bg-indigo-500 rounded-md text-gray-50 "
+								className="px-6 py-3 duration-100 ease-in-out rounded-xl bg-fuchsia-500 hover:bg-fuchsia-600 text-gray-50"
 							>
 								Unete ya
 							</NavLink>

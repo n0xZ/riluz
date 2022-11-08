@@ -1,10 +1,41 @@
 import { Form, NavLink, Outlet } from '@remix-run/react'
+import { Menu, Transition } from '@headlessui/react'
+import { Fragment } from 'react'
 
-export const HomeIcon = () => {
+function MenuIcon() {
 	return (
 		<svg
 			fill="currentColor"
-			stroke-width="0"
+			strokeWidth="0"
+			xmlns="http://www.w3.org/2000/svg"
+			viewBox="0 0 1024 1024"
+			height="1em"
+			width="1em"
+		>
+			<path d="M904 160H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8zm0 624H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8zm0-312H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8z"></path>
+		</svg>
+	)
+}
+function NoteIcon() {
+	return (
+		<svg
+			fill="currentColor"
+			strokeWidth="0"
+			xmlns="http://www.w3.org/2000/svg"
+			viewBox="0 0 1024 1024"
+			height="1em"
+			width="1em"
+		>
+			<path d="M832 64H192c-17.7 0-32 14.3-32 32v832c0 17.7 14.3 32 32 32h640c17.7 0 32-14.3 32-32V96c0-17.7-14.3-32-32-32zM668 345.9L621.5 312 572 347.4V124h96v221.9z"></path>
+		</svg>
+	)
+}
+
+function HomeIcon() {
+	return (
+		<svg
+			fill="currentColor"
+			strokeWidth="0"
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 1024 1024"
 			height="1em"
@@ -14,30 +45,111 @@ export const HomeIcon = () => {
 		</svg>
 	)
 }
+function LogoutIcon() {
+	return (
+		<svg
+			fill="currentColor"
+			strokeWidth="0"
+			xmlns="http://www.w3.org/2000/svg"
+			viewBox="0 0 24 24"
+			height="1em"
+			width="1em"
+		>
+			<path d="M18 2H6a1 1 0 00-1 1v9l5-4v3h6v2h-6v3l-5-4v9a1 1 0 001 1h12a1 1 0 001-1V3a1 1 0 00-1-1z"></path>
+		</svg>
+	)
+}
+function HomeNavMenu() {
+	return (
+		<Menu
+			as="div"
+			className="relative inline-block text-left xl:hidden lg:hidden"
+		>
+			<div>
+				<Menu.Button className="inline-flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-white rounded-md bg-fuchsia-900 bg-opacity-60 hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
+					<MenuIcon />
+				</Menu.Button>
+			</div>
+			<Transition
+				as={Fragment}
+				enter="transition ease-out duration-100"
+				enterFrom="transform opacity-0 scale-95"
+				enterTo="transform opacity-100 scale-100"
+				leave="transition ease-in duration-75"
+				leaveFrom="transform opacity-100 scale-100"
+				leaveTo="transform opacity-0 scale-95"
+			>
+				<Menu.Items className="absolute right-0 w-56 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+					<div className="px-1 py-1 ">
+						<Menu.Item>
+							<NavLink
+								to="/home/notes"
+								className="flex items-center w-full px-2 py-2 text-sm duration-100 ease-in-out rounded-md group text-neutral-900 hover:bg-fuchsia-600"
+							>
+								<NoteIcon />
+								<span>Mis notas</span>
+							</NavLink>
+						</Menu.Item>
+						<Menu.Item>
+							<Form action="/logout" method="post">
+								<button
+									type="submit"
+									className="flex items-center w-full px-2 py-2 text-sm duration-100 ease-in-out rounded-md group text-neutral-900 hover:bg-fuchsia-600"
+								>
+									<LogoutIcon /> <span>Cerrar sesión</span>
+								</button>
+							</Form>
+						</Menu.Item>
+					</div>
+				</Menu.Items>
+			</Transition>
+		</Menu>
+	)
+}
 
 export default function HomeOutlet() {
 	return (
 		<>
 			<header className="p-5 bg-fuchsia-300">
-				<nav className="container flex flex-row items-center justify-between max-w-5xl mx-auto ">
+				<nav className="container flex flex-row items-center justify-between max-w-5xl mx-auto text-lg font-medium ">
 					<h1>
-						<NavLink to="/home">
+						<NavLink
+							to="/home"
+							className="flex flex-row items-center space-x-3 font-medium"
+						>
 							<HomeIcon />
+							<span>Home</span>
 						</NavLink>
 					</h1>
-					<ul className="flex flex-row items-center space-x-5">
+					<ul className="flex-row items-center hidden space-x-5 font-medium xl:flex lg:flex">
 						<li>
-							<NavLink to="/home/notes">Mis notas</NavLink>
+							<NavLink
+								to="/home/notes"
+								className="flex items-center w-full px-2 py-2 text-sm rounded-md group text-neutral-900"
+							>
+								<NoteIcon />
+								<span>Mis notas</span>
+							</NavLink>
+						</li>
+						<li>
+							<NavLink to="/home/contacts">Mis contactos</NavLink>
 						</li>
 						<li>
 							<Form action="/logout" method="post">
-								<button type="submit">Cerrar sesión</button>
+								<button
+									type="submit"
+									className="flex flex-row items-center px-5 py-3 space-x-3 duration-100 ease-in-out rounded-xl bg-fuchsia-500 hover:bg-fuchsia-600 text-gray-50"
+								>
+									<LogoutIcon />
+									<span>Cerrar sesión</span>
+								</button>
 							</Form>
 						</li>
 					</ul>
+					<HomeNavMenu />
 				</nav>
 			</header>
-			<main className="h-screen">
+			<main className="h-screen bg-fuchsia-50">
 				<Outlet />
 			</main>
 		</>

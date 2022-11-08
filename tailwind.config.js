@@ -4,8 +4,8 @@ module.exports = {
 	theme: {
 		extend: {
 			fontFamily: {
-				lexend: ['Lexend Deca', 'cursive'],
-				gowun: ['Gowun Dodum', 'sans-serif'],
+				figtree: ['Figtree', 'cursive'],
+				telex: ['Telex', 'sans-serif'],
 			},
 		},
 	},

@@ -18,7 +18,7 @@ export const links: LinksFunction = () => [
 	{ href: styles, rel: 'stylesheet' },
 	{
 		href:
-			'https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Lexend+Deca:wght@300&display=swap',
+			'https://fonts.googleapis.com/css2?family=Figtree:wght@300&family=Telex&display=swap',
 		rel: 'stylesheet',
 	},
 ]
@@ -30,7 +30,7 @@ export default function App() {
 				<Meta />
 				<Links />
 			</head>
-			<body className="text-neutral-900 bg-gradient-to-r from-violet-100 to-fuchsia-100 font-gowun">
+			<body className="text-neutral-900 font-figtree">
 				<Outlet />
 				<ScrollRestoration />
 				<Scripts />
