@@ -22,10 +22,9 @@ export const register = async ({
 	username,
 	password,
 }: z.infer<typeof registerSchema>) => {
-	const SALT_ROUNDS = process.env.SALT_ROUNDS!
 	const existingUser = await prisma.user.findUnique({ where: { email } })
 	if (existingUser) return
-	const hashedPassword = await bcryptjs.hash(password, SALT_ROUNDS)
+	const hashedPassword = await bcryptjs.hash(password, 10)
 	const createdUser = await prisma.user.create({
 		data: { email, password: hashedPassword, username },
 	})
