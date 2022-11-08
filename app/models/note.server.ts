@@ -9,7 +9,15 @@ export const getNoteByNoteId = async (noteId?: string) => {
 	return await prisma.note.findUnique({ where: { id: noteId } })
 }
 
-export const createNote = async ({ title, content, authorId }: Note) => {
+export const createNote = async ({
+	title,
+	content,
+	authorId,
+}: {
+	title: string
+	content: string
+	authorId: string
+}) => {
 	return await prisma.note.create({
 		data: {
 			title,
