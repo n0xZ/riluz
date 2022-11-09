@@ -59,6 +59,22 @@ function LogoutIcon() {
 		</svg>
 	)
 }
+function ContactIcon() {
+	return (
+		<svg
+			fill="currentColor"
+			strokeWidth="0"
+			xmlns="http://www.w3.org/2000/svg"
+			viewBox="0 0 24 24"
+			height="1em"
+			width="1em"
+		>
+			<path fill="none" d="M0 0h24v24H0z"></path>
+			<path d="M19 7h5v2h-5V7zm-2 5h7v2h-7v-2zm3 5h4v2h-4v-2zM2 22a8 8 0 1116 0h-2a6 6 0 10-12 0H2zm8-9c-3.315 0-6-2.685-6-6s2.685-6 6-6 6 2.685 6 6-2.685 6-6 6zm0-2c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4z"></path>
+		</svg>
+	)
+}
+
 function HomeNavMenu() {
 	return (
 		<Menu
@@ -87,7 +103,16 @@ function HomeNavMenu() {
 								className="flex items-center w-full px-2 py-2 text-sm duration-100 ease-in-out rounded-md group text-neutral-900 hover:bg-fuchsia-600"
 							>
 								<NoteIcon />
-								<span>Mis notas</span>
+								<span>Notas</span>
+							</NavLink>
+						</Menu.Item>
+						<Menu.Item>
+							<NavLink
+								to="/home/contacts"
+								className="flex items-center w-full px-2 py-2 text-sm duration-100 ease-in-out rounded-md group text-neutral-900 hover:bg-fuchsia-600"
+							>
+								<ContactIcon />
+								<span>Contactos</span>
 							</NavLink>
 						</Menu.Item>
 						<Menu.Item>
@@ -110,7 +135,7 @@ function HomeNavMenu() {
 export default function HomeOutlet() {
 	return (
 		<>
-			<header className="p-5 bg-fuchsia-300">
+			<header className="p-5 border-b-2 border-neutral-50">
 				<nav className="container flex flex-row items-center justify-between max-w-5xl mx-auto text-lg font-medium ">
 					<h1>
 						<NavLink
@@ -121,18 +146,24 @@ export default function HomeOutlet() {
 							<span>Home</span>
 						</NavLink>
 					</h1>
-					<ul className="flex-row items-center hidden space-x-5 font-medium xl:flex lg:flex">
+					<ul className="flex-row items-center hidden space-x-5 font-medium xl:flex lg:flex ">
 						<li>
 							<NavLink
 								to="/home/notes"
-								className="flex items-center w-full px-2 py-2 text-sm rounded-md group text-neutral-900"
+								className="flex items-center w-full px-2 py-2 duration-100 ease-in-out rounded-md hover:font-medium hover:bg-gray-100 group text-neutral-900"
 							>
 								<NoteIcon />
-								<span>Mis notas</span>
+								<span>Notas</span>
 							</NavLink>
 						</li>
 						<li>
-							<NavLink to="/home/contacts">Mis contactos</NavLink>
+							<NavLink
+								to="/home/contacts"
+								className="flex items-center w-full px-2 py-2 space-x-3 duration-100 ease-in-out rounded-md hover:font-medium hover:bg-gray-100 group text-neutral-900"
+							>
+								<ContactIcon />
+								<span>Contactos</span>
+							</NavLink>
 						</li>
 						<li>
 							<Form action="/logout" method="post">
@@ -149,7 +180,7 @@ export default function HomeOutlet() {
 					<HomeNavMenu />
 				</nav>
 			</header>
-			<main className="h-screen bg-fuchsia-50">
+			<main className="h-screen ">
 				<Outlet />
 			</main>
 		</>
