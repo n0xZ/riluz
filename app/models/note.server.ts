@@ -22,7 +22,7 @@ export const createNote = async ({
 		data: {
 			title,
 			content,
-			author: { connect: { id: authorId } },
+			authorId,
 		},
 	})
 }
