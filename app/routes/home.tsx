@@ -100,7 +100,7 @@ function HomeNavMenu() {
 						<Menu.Item>
 							<NavLink
 								to="/home/notes"
-								className="flex items-center w-full px-2 py-2 text-sm duration-100 ease-in-out rounded-md group text-neutral-900 hover:bg-fuchsia-600"
+								className="flex items-center w-full px-2 py-2 space-x-2 text-sm duration-100 ease-in-out rounded-md group text-neutral-900 hover:bg-fuchsia-400 hover:text-neutral-100"
 							>
 								<NoteIcon />
 								<span>Notas</span>
@@ -109,7 +109,7 @@ function HomeNavMenu() {
 						<Menu.Item>
 							<NavLink
 								to="/home/contacts"
-								className="flex items-center w-full px-2 py-2 text-sm duration-100 ease-in-out rounded-md group text-neutral-900 hover:bg-fuchsia-600"
+								className="flex items-center w-full px-2 py-2 space-x-2 text-sm duration-100 ease-in-out rounded-md group text-neutral-900 hover:bg-fuchsia-400 hover:text-neutral-100"
 							>
 								<ContactIcon />
 								<span>Contactos</span>
@@ -119,7 +119,7 @@ function HomeNavMenu() {
 							<Form action="/logout" method="post">
 								<button
 									type="submit"
-									className="flex items-center w-full px-2 py-2 text-sm duration-100 ease-in-out rounded-md group text-neutral-900 hover:bg-fuchsia-600"
+									className="flex items-center w-full px-2 py-2 space-x-2 text-sm duration-100 ease-in-out rounded-md group text-neutral-900 hover:bg-fuchsia-400 hover:text-neutral-100"
 								>
 									<LogoutIcon /> <span>Cerrar sesión</span>
 								</button>
