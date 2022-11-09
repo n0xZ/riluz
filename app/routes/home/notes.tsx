@@ -13,7 +13,7 @@ export const loader = async ({ request }: LoaderArgs) => {
 	return getNotesByAuthorId(loggedUserId)
 }
 
-function AddNoteIcon({className}:{className?:string}) {
+function AddNoteIcon({ className }: { className?: string }) {
 	return (
 		<svg
 			fill="currentColor"
@@ -52,16 +52,20 @@ export default function NotesOutlet() {
 	const notes = useLoaderData<typeof loader>()
 	return (
 		<>
-			<section className="hidden w-full h-full xl:flex xl:flex-row lg:flex md:flex ">
-				<div className="h-full border-r-2 rounded shadow-sm w-96 border-neutral-50">
+			<section className="hidden w-full h-full xl:flex xl:flex-row lg:flex md:flex">
+				<div className="h-full min-h-screen border-r-2 rounded shadow-sm w-96 border-neutral-50">
 					<span className="flex flex-row items-center justify-center w-full mx-4 mt-5 space-x-10 mb-7 ">
 						<h1 className="text-lg font-bold text-center ">Mis notas</h1>
 						<Link to="/home/notes/create" className="text-lg font-bold text-center ">
-							<AddNoteIcon  className='duration-100 ease-in-out w-7 h-7 hover:text-fuchsia-300' />
+							<AddNoteIcon className="duration-100 ease-in-out w-7 h-7 hover:text-fuchsia-300" />
 						</Link>
 					</span>
 
-					<NoteList notes={notes} />
+					<div className='flex flex-col justify-between '>
+					
+						<NoteList notes={notes} />
+						<Link to="/home/notes" className='h-full text-center'>Volver atrás</Link>
+					</div>
 				</div>
 				<article className="w-full h-full">
 					<Outlet />

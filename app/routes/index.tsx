@@ -64,7 +64,7 @@ export default function Index() {
 	return (
 		<>
 			<header className="p-5">
-				<nav className="container flex flex-row items-center justify-between max-w-5xl mx-auto text-xl text-gray-600 font-telex">
+				<nav className="container flex flex-row items-center justify-between max-w-5xl mx-auto text-xl text-gray-600 ">
 					<h1>
 						<NavLink
 							to="/"
