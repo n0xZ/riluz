@@ -1,4 +1,4 @@
-import { NavLink } from '@remix-run/react'
+import { Link, NavLink } from '@remix-run/react'
 import { Menu, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
 
@@ -63,7 +63,7 @@ function NavMenu() {
 export default function Index() {
 	return (
 		<>
-			<header className="p-5 ">
+			<header className="p-5">
 				<nav className="container flex flex-row items-center justify-between max-w-5xl mx-auto text-xl text-gray-600 font-telex">
 					<h1>
 						<NavLink
@@ -85,7 +85,7 @@ export default function Index() {
 						<li>
 							<NavLink
 								to="/register"
-								className="px-6 py-3 duration-100 ease-in-out rounded-xl bg-fuchsia-500 hover:bg-fuchsia-600 text-gray-50"
+								className="px-6 py-3 duration-100 ease-in-out rounded-md bg-fuchsia-500 hover:bg-fuchsia-600 text-gray-50"
 							>
 								Unete ya
 							</NavLink>
@@ -95,8 +95,21 @@ export default function Index() {
 				</nav>
 			</header>
 			<main className="h-screen">
-				<section className="grid h-full place-items-center">
-					<h1>Crea tus notas, y habla con tus amigos devs en Riluz</h1>
+				<section className="container flex flex-col items-center justify-center h-full max-w-3xl mx-auto space-y-4">
+					<h1 className="p-2 text-5xl font-semibold tracking-normal text-center xl:text-6xl">
+						Crear tus notas y conectarte con tus
+						<span className="text-fuchsia-400"> amigos devs</span> nunca fue tan fácil
+					</h1>
+					<p className="text-xl text-center text-neutral-400">
+						Con Riluz, podrás contactarte con tus amigos devs de todo el país, y a la
+						vez, podrás crear tus apuntes personales.
+					</p>
+					<Link
+						to="/login"
+						className="px-6 py-3 font-semibold duration-100 ease-in-out rounded-md bg-fuchsia-500 hover:bg-fuchsia-600 text-gray-50"
+					>
+						Comenzar ya
+					</Link>
 				</section>
 			</main>
 		</>
